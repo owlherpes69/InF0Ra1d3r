@@ -9,7 +9,7 @@ The tool will consist of several components working together to achieve the desi
 @startuml
 package "User Info Extraction Tool" {
   [Web Scraper] --> [User Profile Data]
-  [Social Media API Integration] --> [User Profile Data]
+  [Social Media API Integration (Optional)] --> [User Profile Data]
   [User Profile Data] --> [Interesting Info Extractor]
   [Interesting Info Extractor] --> [Wordlist Generator]
   [Wordlist Generator] --> [Permutation Engine]
@@ -25,7 +25,7 @@ package "User Info Extraction Tool" {
 
 - **user_profile_data**
   - `id`: INTEGER, Primary Key
-  - `source`: VARCHAR, Source of the data (e.g., Twitter, Facebook, Blog)
+  - `source`: VARCHAR, Source of the data (e.g., Website, Blog, Twitter, Facebook)
   - `raw_data`: TEXT, Raw data collected from the source
 
 - **interesting_info**
@@ -48,7 +48,8 @@ package "User Info Extraction Tool" {
 ==== Interesting Info Extraction Algorithm
 
 1. **Data Collection:**
-   - Use web scrapers and social media API integrations to collect user profile data.
+   - Use web scrapers to collect user profile data from various online sources.
+   - Optionally, use social media APIs to gather additional user data.
    - Store raw data in `user_profile_data` table.
 
 2. **Data Processing:**
