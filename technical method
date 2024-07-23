@@ -1,0 +1,101 @@
+== Method
+
+The tool will consist of several components working together to achieve the desired functionality. Below is an outline of the architecture, database schema, and key algorithms.
+
+=== Architecture Design
+
+[plantuml]
+----
+@startuml
+package "User Info Extraction Tool" {
+  [Web Scraper] --> [User Profile Data]
+  [Social Media API Integration] --> [User Profile Data]
+  [User Profile Data] --> [Interesting Info Extractor]
+  [Interesting Info Extractor] --> [Wordlist Generator]
+  [Wordlist Generator] --> [Permutation Engine]
+  [Permutation Engine] --> [Wordlist Database]
+  [User Interface] --> [Wordlist Database]
+}
+@enduml
+----
+
+=== Database Schema
+
+==== Tables
+
+- **user_profile_data**
+  - `id`: INTEGER, Primary Key
+  - `source`: VARCHAR, Source of the data (e.g., Twitter, Facebook, Blog)
+  - `raw_data`: TEXT, Raw data collected from the source
+
+- **interesting_info**
+  - `id`: INTEGER, Primary Key
+  - `user_profile_data_id`: INTEGER, Foreign Key
+  - `info_type`: VARCHAR, Type of information (e.g., favorite car, pet name)
+  - `info_value`: VARCHAR, Extracted information
+
+- **wordlist**
+  - `id`: INTEGER, Primary Key
+  - `word`: VARCHAR, Word in the wordlist
+
+- **permutations**
+  - `id`: INTEGER, Primary Key
+  - `wordlist_id`: INTEGER, Foreign Key
+  - `permutation`: VARCHAR, Permutated word
+
+=== Algorithms
+
+==== Interesting Info Extraction Algorithm
+
+1. **Data Collection:**
+   - Use web scrapers and social media API integrations to collect user profile data.
+   - Store raw data in `user_profile_data` table.
+
+2. **Data Processing:**
+   - Process raw data to identify interesting information using NLP and regex patterns.
+   - Store extracted information in `interesting_info` table.
+
+==== Wordlist Generation Algorithm
+
+1. **Initial Wordlist Creation:**
+   - Extract unique values from `interesting_info` table.
+   - Store words in `wordlist` table.
+
+2. **Permutation Generation:**
+   - For each word in the `wordlist` table, generate permutations including:
+     - Capitalization variations
+     - Numeric suffixes
+     - Symbol suffixes
+   - For each pair of words, generate combined and mixed permutations.
+   - Store all permutations in `permutations` table.
+
+[plantuml]
+----
+@startuml
+class WebScraper {
+  +scrape(url: String): String
+}
+class SocialMediaAPI {
+  +fetchData(userID: String): String
+}
+class InterestingInfoExtractor {
+  +extract(rawData: String): List<Info>
+}
+class WordlistGenerator {
+  +generate(infoList: List<Info>): List<String>
+}
+class PermutationEngine {
+  +permute(word: String): List<String>
+  +combine(word1: String, word2: String): List<String>
+}
+class Database {
+  +store(table: String, data: Map)
+}
+
+WebScraper --> InterestingInfoExtractor
+SocialMediaAPI --> InterestingInfoExtractor
+InterestingInfoExtractor --> WordlistGenerator
+WordlistGenerator --> PermutationEngine
+PermutationEngine --> Database
+@enduml
+----
