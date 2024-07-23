@@ -1,0 +1,55 @@
+== Milestones
+
+The project will be divided into several milestones to track progress and ensure timely completion. Each milestone will focus on specific components and stages of the implementation.
+
+=== Milestone 1: Project Setup and Environment Configuration
+- Set up the development environment.
+- Install necessary libraries and tools.
+- Establish project structure.
+
+=== Milestone 2: Web Scraper Development
+- Complete development of web scraping scripts.
+- Implement error handling and rate limiting mechanisms.
+- Successfully store scraped data in the `user_profile_data` table.
+
+=== Milestone 3: Optional Social Media API Integration
+- Obtain API keys and configure access to social media APIs.
+- Develop scripts to fetch data using social media APIs.
+- Store fetched data in the `user_profile_data` table.
+
+=== Milestone 4: Interesting Info Extractor
+- Develop NLP and regex-based extraction algorithms.
+- Extract and store interesting information in the `interesting_info` table.
+- Validate accuracy and relevance of extracted information.
+
+=== Milestone 5: Wordlist Generator
+- Generate an initial wordlist from extracted information.
+- Store the wordlist in the `wordlist` table.
+- Review and refine the wordlist generation process.
+
+=== Milestone 6: Permutation Engine
+- Develop permutation algorithms for individual words.
+- Implement combination and mixing of words.
+- Store generated permutations in the `permutations` table.
+- Optimize permutation engine for performance.
+
+=== Milestone 7: User Interface Development
+- Design and develop a user-friendly interface.
+- Implement features for reviewing and modifying the wordlist.
+- Ensure seamless interaction between the UI and the database.
+
+=== Milestone 8: Testing and Optimization
+- Conduct unit and integration testing for all components.
+- Perform end-to-end testing of the entire workflow.
+- Optimize performance and address any identified issues.
+
+=== Milestone 9: Deployment
+- Set up the deployment environment (hosting, database, etc.).
+- Deploy the tool and verify integration of all components.
+- Implement monitoring and maintenance routines.
+
+=== Milestone 10: Post-Deployment Review and Enhancements
+- Gather feedback from initial users.
+- Make necessary enhancements and updates.
+- Plan for future improvements based on user feedback.
+
