@@ -1,0 +1,31 @@
+= SPEC-001: User Information Extraction and Wordlist Generation Tool
+:sectnums:
+:toc:
+
+== Background
+
+The tool aims to gather interesting user information from a target user's profile on social media, websites, blogs, or other online presences. The extracted information will be used to generate a wordlist, which will be permutated and used for brute force attacks on the target user's assets.
+
+== Requirements
+
+*Must Have:*
+- Extract user information from various online sources.
+- Identify and collect interesting user information.
+- Store the collected information in a wordlist.
+- Allow users to review and modify the wordlist.
+- Generate permutations of individual words (e.g., "Ford" -> "Ford1", "Ford12", "ford1", "Ford1!").
+- Combine and mix words to create new words (e.g., "Ford" + "Ranger" -> "fonger").
+- Permutate combinations of words.
+- Handle a large number of words (e.g., 300+ words resulting in 10,000+ permutations).
+
+*Should Have:*
+- User-friendly interface for reviewing and modifying the wordlist.
+- Efficient algorithms to handle large-scale permutations.
+
+*Could Have:*
+- Support for multiple languages.
+- Integration with other wordlist tools like WordlistRaider.
+
+*Won't Have:*
+- Direct brute force attack capabilities (tool is for wordlist generation only).
+
